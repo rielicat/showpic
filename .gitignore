@@ -23,3 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/firebase.config.json
+
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
