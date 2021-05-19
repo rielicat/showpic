@@ -89,6 +89,7 @@ interface UpdateFollowingProps {
 }
 
 type UpdateMethod = "arrayRemove" | "arrayUnion";
+
 /**
  * Function that adds current user as new follower to target user.
  * Also adds target user as following by current's user
