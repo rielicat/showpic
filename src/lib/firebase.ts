@@ -3,14 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
 
-const config = {
-  apiKey: "AIzaSyCVbPlNwNM1_yckX23wmrOsj57nE6DMkMY",
-  authDomain: "instagram-a76bb.firebaseapp.com",
-  projectId: "instagram-a76bb",
-  storageBucket: "instagram-a76bb.appspot.com",
-  messagingSenderId: "806136304477",
-  appId: "1:806136304477:web:d1ce46392eafc275944eb4",
-};
+import config from 'firebase.config.json';
 
 const firebase = !Firebase.apps.length
   ? Firebase.initializeApp(config)
