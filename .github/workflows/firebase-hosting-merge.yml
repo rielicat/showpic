@@ -2,16 +2,31 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
+"on":
   push:
     branches:
       - master
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.10.1]
     steps:
       - uses: actions/checkout@v2
-      - run: 'echo "{\"apiKey\": \"$FIREBASE_API_KEY\",\"authDomain\": \"$FIREBASE_AUTH_DOMAIN\",\"projectId\": \"$FIREBASE_PROJECT_ID\",\"storageBucket\":\"$FIREBASE_STORAGE_BUCKET\",\"messagingSenderId\": \"$FIREBASE_MESSAGING_SENDER_ID\",\"appId\":\"$FIREBASE_APP_ID\"}" > src/firebase.config.json && npm i && npm run build'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache .pnpm-store
+        uses: actions/cache@v1
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install pnpm
+        run: curl -f https://get.pnpm.io/v6.js | node - add --global pnpm@6
+      - name: Build
+        run: 'echo "{\"apiKey\": \"$FIREBASE_API_KEY\",\"authDomain\": \"$FIREBASE_AUTH_DOMAIN\",\"projectId\": \"$FIREBASE_PROJECT_ID\",\"storageBucket\":\"$FIREBASE_STORAGE_BUCKET\",\"messagingSenderId\": \"$FIREBASE_MESSAGING_SENDER_ID\",\"appId\":\"$FIREBASE_APP_ID\"}" > src/firebase.config.json && pnpm install && pnpm build'
         env:
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
           FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
@@ -21,7 +36,7 @@ jobs:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INSTAGRAM_A76BB }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_INSTAGRAM_A76BB }}"
           channelId: live
           projectId: instagram-a76bb

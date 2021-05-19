@@ -18,7 +18,7 @@ export default function Header() {
   useEffect(() => {
     addPaths(["logo.png"]);
     if (user?.displayName) getAvatar(user.displayName);
-  }, []);
+  }, [user]);
 
   const handleSignOut = () => {
     auth.signOut();

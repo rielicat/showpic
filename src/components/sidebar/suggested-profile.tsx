@@ -49,6 +49,7 @@ export default function SuggestedProfile({
           className="rounded-full w-8 flex mr-3"
           src={images[`${username}.jpg`]}
           alt={`suggested-profile-${username}`}
+          skeletonSize={{ width: 41, height: 41 }}
         />
         <Link to={`/${username}`}>
           <p className="font-bold text-sm">{username}</p>
