@@ -29,10 +29,11 @@ export default function User({ username, fullName }: Props) {
     >
       <div className="flex items-center justify-between col-span-1">
         <Img
+          circle
           className="rounded-full w-16 flex mr-3"
           src={images[`${username}.jpg`]}
           alt="Avatar"
-          skeletonSize={{ width: 61, height: 61 }}
+          skeletonSize={{ width: 64, height: 64 }}
         />
       </div>
       <div className="col-span-3">
