@@ -43,11 +43,6 @@ export default function Authentication(props: Props) {
   }, []);
 
   useEffect(() => {
-    // firestore
-    //   .collection("forms")
-    //   .doc(action)
-    //   .get()
-    //   .then((res) => setFormData(res.data() as FormData));
     import(`../data/forms/${action}.json`).then((res) => setFormData(res));
   }, [action]);
 
@@ -67,10 +62,11 @@ export default function Authentication(props: Props) {
   };
 
   const handleSignUp = async () => {
+    const { password } = payload;
     if (!(await doesUsernameExist(payload.username))) {
       const createdUser = await auth.createUserWithEmailAndPassword(
         payload.email,
-        payload.password
+        password
       );
       await createdUser.user?.updateProfile({ displayName: payload.username });
       await firestore.collection("users").add({
