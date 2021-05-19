@@ -1,14 +1,13 @@
-## Instagram clone with CRA, Tailwind CSS and Firebase. ##
+## Instagram clone with CRA, Tailwind CSS and Firebase.
+Based on a course from Freecodecamp's YouTube's Channel.
 
-#### Live preview ####: https://instagram.pyscriptbug.com
+### [Live preview](https://instagram.pyscriptbug.com)
 
-#### Create React App ####  https://es.reactjs.org/docs/create-a-new-react-app.html
-#### Tailwind CSS #### - https://tailwindcss.com/
-#### Firebase #### - https://firebase.google.com/
+###### Create React App - https://es.reactjs.org/docs/create-a-new-react-app.html
+###### Tailwind CSS - https://tailwindcss.com
+###### Firebase - https://firebase.google.com
 
-This is based on a course from Freecodecamp's YouTube's Channel.
-
-Link to course - https://www.youtube.com/watch?v=mDgEqoQUBgk
+###### Link to course - https://www.youtube.com/watch?v=mDgEqoQUBgk
 
 ##### Requirements: #####
     Node.js v14.10.1
