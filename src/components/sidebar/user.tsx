@@ -32,6 +32,7 @@ export default function User({ username, fullName }: Props) {
           className="rounded-full w-16 flex mr-3"
           src={images[`${username}.jpg`]}
           alt="Avatar"
+          skeletonSize={{ width: 61, height: 61 }}
         />
       </div>
       <div className="col-span-3">

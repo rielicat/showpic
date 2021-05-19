@@ -19,6 +19,7 @@ export default function Img(props: Props) {
       circle={circle}
       count={1}
       className={className}
+      style={circle ? { borderRadius: "100%" } : undefined}
       {...skeletonSize}
     />
   ) : (
