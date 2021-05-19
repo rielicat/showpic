@@ -46,10 +46,11 @@ export default function SuggestedProfile({
     <div className="flex flex-row items-center align-center justify-between">
       <div className="flex items-center justify-between">
         <Img
+          circle
           className="rounded-full w-8 flex mr-3"
           src={images[`${username}.jpg`]}
           alt={`suggested-profile-${username}`}
-          skeletonSize={{ width: 41, height: 41 }}
+          skeletonSize={{ width: 32, height: 32 }}
         />
         <Link to={`/${username}`}>
           <p className="font-bold text-sm">{username}</p>
