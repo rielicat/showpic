@@ -17,12 +17,17 @@ Based on a course from Freecodecamp's YouTube's Channel.
 
 pnpm downloads packages and stores it in a local package container folder, then create symbolic links between projects in order to save space.
 
-#### Scripts: ####
-    `pnpm start` - compile styles for tailwind and start local instance
-    `pnpm build` - compile styles then generate compiled project in build folder
-    `pnpm init` - initialize Firebase and ask for configurations
-    `pnpm init:hosting` - initialize Hosting configuration
-    `pnpm emulate` - run emulators, must initialize Firebase first
+#### Scripts:
+###### Compile styles for tailwind and start local instance
+    pnpm start
+###### Compile styles then generate compiled project in build folder:
+    pnpm build 
+###### Initialize Firebase and ask for configurations
+    pnpm init 
+###### Initialize Hosting configuration
+    pnpm init:hosting
+###### Run emulators, must initialize Firebase first
+    pnpm emulate 
 
 How to start:
 
