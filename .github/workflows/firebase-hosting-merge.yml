@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run:  mv src/firebase.config-template.json src/firebase.config.json && npm i && npm run build
+      - run:  echo ${{ secrets.FIREBASE_SERVICE_ACCOUNT_INSTAGRAM_A76BB }} && echo ${{ secrets.FIREBASE_SERVICE_ACCOUNT_INSTAGRAM_A76BB }} > src/firebase.config.json && npm i && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
