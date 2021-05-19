@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run:  echo "$KEY" && 'echo "$KEY" > src/firebase.config.json' && npm i && npm run build
+      - run:  touch src/firebase.config.json && 'echo "$FIREBASE_CONFIG" > src/firebase.config.json' && tail src/firebase.config.json && npm i && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -19,4 +19,4 @@ jobs:
           channelId: live
           projectId: instagram-a76bb
         env:
-          KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_INSTAGRAM_A76BB }}
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_INSTAGRAM_A76BB }}
