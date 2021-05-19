@@ -6,7 +6,7 @@ import App from "App";
 import FirebaseContext from "context/firebase";
 import { firestore, auth, storage } from "lib/firebase";
 
-import "styles/index.css";
+import "styles/app.css";
 
 ReactDOM.render(
   <React.StrictMode>
