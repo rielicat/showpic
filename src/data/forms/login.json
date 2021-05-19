@@ -1,0 +1,22 @@
+{
+  "buttonText": "Login",
+  "fields": [
+    {
+      "maxLength": 50,
+      "aria-label": "Enter your email address",
+      "placeholder": "Email address",
+      "key": "email",
+      "type": "email",
+      "position": 100
+    },
+    {
+      "placeholder": "Password",
+      "aria-label": "Enter your password",
+      "type": "password",
+      "maxLength": 12,
+      "key": "password",
+      "minLength": 6,
+      "position": 101
+    }
+  ]
+}

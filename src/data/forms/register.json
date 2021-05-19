@@ -1,0 +1,38 @@
+{
+  "fields": [
+    {
+      "key": "username",
+      "type": "text",
+      "placeholder": "Username",
+      "aria-label": "Enter your username",
+      "position": 100,
+      "maxLength": 12
+    },
+    {
+      "key": "fullName",
+      "type": "text",
+      "placeholder": "Full name",
+      "aria-label": "Enter your full name",
+      "position": 101,
+      "maxLength": 40
+    },
+    {
+      "placeholder": "Email address",
+      "position": 102,
+      "aria-label": "Enter your email address",
+      "maxLength": 50,
+      "key": "email",
+      "type": "email"
+    },
+    {
+      "minLength": 6,
+      "key": "password",
+      "placeholder": "Password",
+      "maxLength": 20,
+      "aria-label": "Enter your password",
+      "position": 103,
+      "type": "password"
+    }
+  ],
+  "buttonText": "Sign Up"
+}
