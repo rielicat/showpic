@@ -16,6 +16,13 @@ Based on a course from Freecodecamp's YouTube's Channel.
     npm install -g pnpm@^6.3.0
 pnpm downloads packages and stores it in a local package container folder, then create symbolic links between projects in order to save space.
 
+How to start:
+
+1) Clone Repository
+2) Run `pnpm i`
+3) Rename firebase.config-template.json to firebase.config.json
+4) Replace values in firebase.config.json to your Firebase's config data.
+
 #### Scripts:
 ###### Compile styles for tailwind and start local instance
     pnpm start
@@ -27,10 +34,3 @@ pnpm downloads packages and stores it in a local package container folder, then 
     pnpm init:hosting
 ###### Run emulators, must initialize Firebase first
     pnpm emulate 
-
-How to start:
-
-1) Clone Repository
-2) Run `pnpm i`
-3) Rename firebase.config-template.json to firebase.config.json
-4) Replace values in firebase.config.json to your Firebase's config data.
