@@ -12,9 +12,8 @@ Based on a course from Freecodecamp's YouTube's Channel.
 ##### Requirements: #####
     Node.js v14.10.1
 
-##### Recomended: #####
-    pnpm 6.3.0 https://pnpm.io/
-
+##### Recomended to install [pnpm](https://pnpm.io/):
+    npm install -g pnpm@^6.3.0
 pnpm downloads packages and stores it in a local package container folder, then create symbolic links between projects in order to save space.
 
 #### Scripts:
