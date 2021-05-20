@@ -8,7 +8,7 @@ export type ImageProps = {
 
 export interface AssetsContextInterface {
   images: ImageProps;
-  addPaths: Function;
+  addPaths: (paths: string[], root?: string) => void;
   getAvatar: (u: string) => string | undefined;
 }
 

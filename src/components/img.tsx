@@ -12,6 +12,10 @@ interface Props
   skeletonSize?: SkeletonSize;
 }
 
+const skeletonStyle: React.CSSProperties = {
+  lineHeight: 1.5,
+};
+
 export default function Img(props: Props) {
   const { src, alt, className, skeletonSize, circle, ...rest } = props;
   return !src ? (
@@ -19,7 +23,9 @@ export default function Img(props: Props) {
       circle={circle}
       count={1}
       className={className}
-      style={circle ? { borderRadius: "100%" } : undefined}
+      style={
+        circle ? { ...skeletonStyle, borderRadius: "100%" } : skeletonStyle
+      }
       {...skeletonSize}
     />
   ) : (

@@ -1,3 +1,4 @@
+import { Photo } from "interfaces/post";
 import { User } from "interfaces/user";
 import { storage, firestore, FieldValue } from "lib/firebase";
 
@@ -58,7 +59,7 @@ export const fetchImages = async (
 export const getUserByUserId = async (userId: string) => {
   return (
     await firestore.collection("users").where("userId", "==", userId).get()
-  ).docs.map((item) => ({ ...item.data(), docId: item.id } as User));
+  ).docs.map((item) => ({ ...item.data(), docId: item.id } as User))[0];
 };
 
 /**
@@ -123,6 +124,82 @@ export const updateFollowing = async (
     return true;
   } catch (e) {
     console.error(e.message);
-    return false;
   }
+  return false;
+};
+
+/**
+ * Get photos for timeline
+ *
+ * @param userId Current's user ID
+ * @param following Users followed by current user
+ * @returns List of photos from followed users
+ */
+export const getTimelinePhotos = async (
+  userId: string,
+  following: string[]
+) => {
+  return (
+    await firestore.collection("photos").where("userId", "in", following).get()
+  )?.docs
+    .map(
+      (photo) =>
+        ({
+          ...photo.data(),
+          docId: photo.id,
+          userLikedPhoto: photo.data().likes?.includes(userId),
+        } as Photo)
+    )
+    .sort((a, b) => b.dateCreated - a.dateCreated);
+};
+
+/**
+ * Like or unlike photo function
+ *
+ * @param docId photo document id
+ * @param userId current user id
+ * @param isLiked tells if photo is currently liked
+ * @returns boolean value if successfully updated or current state if an error was caught
+ */
+export const likePhoto = async (
+  docId: string,
+  userId: string,
+  isLiked: boolean
+) => {
+  const method: UpdateMethod = isLiked ? "arrayRemove" : "arrayUnion";
+
+  try {
+    await firestore
+      .collection("photos")
+      .doc(docId)
+      .update({ likes: FieldValue[method](userId) });
+    return !isLiked;
+  } catch (e) {
+    console.error(e.message);
+  }
+  return isLiked;
+};
+
+/**
+ * Post comment to photo
+ * @param docId Photo's doc ID
+ * @param comment Comment object that has comment string and displayName
+ * @returns true if updated false if an error was caught
+ */
+export const postComment = async (
+  docId: string,
+  comment: { comment: string; displayName: string }
+) => {
+  try {
+    await firestore
+      .collection("photos")
+      .doc(docId)
+      .update({
+        comments: FieldValue.arrayUnion(comment),
+      });
+    return true;
+  } catch (e) {
+    console.error(e.message);
+  }
+  return false;
 };

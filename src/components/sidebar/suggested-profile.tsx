@@ -30,7 +30,7 @@ export default function SuggestedProfile({
 
   useEffect(() => {
     if (username) getAvatar(username);
-  }, []);
+  }, [username]);
 
   const handleFollow = async () => {
     if (
@@ -44,7 +44,7 @@ export default function SuggestedProfile({
 
   return !followed ? (
     <div className="flex flex-row items-center align-center justify-between">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center">
         <Img
           circle
           className="rounded-full w-8 flex mr-3"
