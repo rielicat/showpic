@@ -1,0 +1,17 @@
+{
+  "name": "images/",
+  "bucket": "instagram-a76bb.appspot.com",
+  "contentType": "text/plain",
+  "metageneration": 1,
+  "generation": 1621463337935,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [],
+  "timeCreated": "2021-05-19T22:28:57.934Z",
+  "updated": "2021-05-19T22:28:57.934Z",
+  "size": 0,
+  "md5Hash": "1B2M2Y8AsgTpgAmY7PhCfg==",
+  "crc32c": "0"
+}

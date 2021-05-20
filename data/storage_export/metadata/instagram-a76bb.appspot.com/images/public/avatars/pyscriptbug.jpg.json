@@ -1,0 +1,17 @@
+{
+  "name": "images/public/avatars/pyscriptbug.jpg",
+  "bucket": "instagram-a76bb.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1621463386061,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [],
+  "timeCreated": "2021-05-19T22:29:46.060Z",
+  "updated": "2021-05-19T22:29:46.061Z",
+  "size": 157129,
+  "md5Hash": "f/cd+1YX6eCP2SvR5ZoLWQ==",
+  "crc32c": "1857512223"
+}

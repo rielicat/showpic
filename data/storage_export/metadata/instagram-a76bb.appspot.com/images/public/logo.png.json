@@ -1,0 +1,17 @@
+{
+  "name": "images/public/logo.png",
+  "bucket": "instagram-a76bb.appspot.com",
+  "contentType": "image/png",
+  "metageneration": 1,
+  "generation": 1621463393996,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [],
+  "timeCreated": "2021-05-19T22:29:53.995Z",
+  "updated": "2021-05-19T22:29:53.995Z",
+  "size": 3841,
+  "md5Hash": "xG9U5SPyZW0vUY1RYjRIoA==",
+  "crc32c": "3928551806"
+}

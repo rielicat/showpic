@@ -36,7 +36,7 @@ export default function Authentication(props: Props) {
 
   useEffect(() => {
     document.title = `${capitalize(action)} - Instagram`;
-  }, []);
+  }, [action]);
 
   useEffect(() => {
     addPaths(paths);
@@ -123,7 +123,7 @@ export default function Authentication(props: Props) {
               disabled={isInvalid || loading}
               type="submit"
               className={`bg-blue-medium text-white w-full rounded h-8 font-bold capitalize ${
-                isInvalid && "opacity-50"
+                (isInvalid || loading) && "opacity-50"
               }`}
             >
               {formData?.buttonText}

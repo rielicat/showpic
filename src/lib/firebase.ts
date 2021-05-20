@@ -14,9 +14,10 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const FieldValue = Firebase.firestore.FieldValue;
 
+
 // eslint-disable-next-line no-restricted-globals
-if (location.hostname === "localhost") {
-  auth.useEmulator("http://localhost:9099");
-  firestore.useEmulator("localhost", 8080);
-  storage.useEmulator("localhost", 9199);
-}
+// if (location.hostname === "localhost") {
+//   auth.useEmulator("http://localhost:9099");
+//   firestore.useEmulator("localhost", 8080);
+//   storage.useEmulator("localhost", 9199);
+// }

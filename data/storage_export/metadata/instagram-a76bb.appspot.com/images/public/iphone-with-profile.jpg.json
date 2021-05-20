@@ -1,0 +1,17 @@
+{
+  "name": "images/public/iphone-with-profile.jpg",
+  "bucket": "instagram-a76bb.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1621463394001,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [],
+  "timeCreated": "2021-05-19T22:29:54.000Z",
+  "updated": "2021-05-19T22:29:54.000Z",
+  "size": 120857,
+  "md5Hash": "Blr7SbxdQDqsr4RjAflvrw==",
+  "crc32c": "3714352685"
+}

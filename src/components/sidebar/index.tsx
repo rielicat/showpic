@@ -8,10 +8,10 @@ export default function Sidebar() {
   const { user } = useContext(UserContext);
   const {
     user: { username, fullName, userId, docId, following },
-  } = useUser(user?.uid);
+  } = useUser(user.uid);
 
   return (
-    <div className="p-4">
+    <div className="p-4 hidden lg:block">
       <User username={username} fullName={fullName} />
       <Suggestions userId={userId} docId={docId} following={following} />
     </div>

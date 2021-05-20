@@ -1,0 +1,17 @@
+{
+  "name": "images/public/avatars/orwell.jpg",
+  "bucket": "instagram-a76bb.appspot.com",
+  "contentType": "image/jpeg",
+  "metageneration": 1,
+  "generation": 1621463386046,
+  "storageClass": "STANDARD",
+  "etag": "someETag",
+  "contentDisposition": "inline",
+  "contentEncoding": "identity",
+  "downloadTokens": [],
+  "timeCreated": "2021-05-19T22:29:46.045Z",
+  "updated": "2021-05-19T22:29:46.045Z",
+  "size": 59447,
+  "md5Hash": "8nLJ8ASuRPriFZvbPh6N2g==",
+  "crc32c": "2387558995"
+}
