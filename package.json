@@ -27,7 +27,7 @@
     "init": "firebase init",
     "init:hosting": "firebase init hosting",
     "init:emulators": "firebase init emulators",
-    "emulate": "firebase emulators:start --import ./data --export-on-exit"
+    "emulate": "firebase emulators:start"
   },
   "eslintConfig": {
     "extends": [

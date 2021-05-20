@@ -11,7 +11,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     document.title = "Dashboard - Instagram";
-    if (!user.uid) history.replace("/login");
   }, [user, history]);
 
   return (

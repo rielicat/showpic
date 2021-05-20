@@ -6,6 +6,7 @@ import UserContext from "context/user";
 import AssetsContext from "context/assets";
 import useAuthListener from "hooks/use-auth-listener";
 import useImageListener from "hooks/use-image-listener";
+import ProtectedRoute from "helpers/protected.route";
 
 const Authentication = lazy(() => import("views/authentication"));
 const NotFound = lazy(() => import("views/not-found"));
@@ -29,7 +30,12 @@ function App() {
                 path={ROUTES.SIGNUP}
                 render={() => <Authentication action="register" />}
               />
-              <Route path={ROUTES.DASHBOARD} component={Dashboard} />
+              <ProtectedRoute
+                exact
+                path={ROUTES.DASHBOARD}
+                component={Dashboard}
+              />
+
               <Route path={ROUTES.NOT_FOUND} component={NotFound} />
             </Switch>
           </Suspense>

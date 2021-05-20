@@ -11,12 +11,11 @@ import Img from "./img";
 export default function Header() {
   const { auth } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
-  const { images, addPaths, getAvatar } = useContext(AssetsContext);
+  const { images, getAvatar } = useContext(AssetsContext);
 
   const history = useHistory();
 
   useEffect(() => {
-    addPaths(["logo.png"]);
     if (user?.displayName) getAvatar(user.displayName);
   }, [user]);
 
@@ -34,7 +33,7 @@ export default function Header() {
               <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
                 <Img
                   skeletonSize={{ width: 103, height: 29 }}
-                  src={images["logo.png"]}
+                  src={"/images/logo.png"}
                   alt="Instagram"
                   className="mt-2 w-6/12"
                 />

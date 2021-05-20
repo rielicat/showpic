@@ -9,20 +9,18 @@ import Img from "components/img";
 
 import * as ROUTES from "constants/routes";
 import { capitalize } from "helpers/format";
-import AssetsContext, { ImagePaths } from "context/assets";
+import useAuthListener from "hooks/use-auth-listener";
 
 interface Props {
   action: "login" | "register";
 }
 
-const paths: ImagePaths[] = ["iphone-with-profile.jpg", "logo.png"];
-
 export default function Authentication(props: Props) {
   const { action } = props;
 
   const history = useHistory();
+  const { user } = useAuthListener();
   const { firestore, auth } = useContext(FirebaseContext);
-  const { images, addPaths } = useContext(AssetsContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -39,12 +37,12 @@ export default function Authentication(props: Props) {
   }, [action]);
 
   useEffect(() => {
-    addPaths(paths);
-  }, []);
-
-  useEffect(() => {
     import(`../data/forms/${action}.json`).then((res) => setFormData(res));
   }, [action]);
+
+  useEffect(() => {
+    if (user.uid) history.replace(ROUTES.DASHBOARD);
+  }, [user]);
 
   const handleAuth = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -91,7 +89,7 @@ export default function Authentication(props: Props) {
       <div className="flex w-3/5 justify-center">
         <Img
           skeletonSize={{ height: 400, width: 280 }}
-          src={images["iphone-with-profile.jpg"]}
+          src={"/images/iphone-with-profile.jpg"}
           alt="iPhone with Instagram app"
         />
       </div>
@@ -100,7 +98,7 @@ export default function Authentication(props: Props) {
           <h1 className="flex justify-center w-full">
             <Img
               skeletonSize={{ width: 206, height: 58 }}
-              src={images["logo.png"]}
+              src={"/images/logo.png"}
               alt="Instagram"
               className="mt-2 w-6/12 mb-4"
             />
