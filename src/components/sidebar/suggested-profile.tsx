@@ -36,7 +36,7 @@ export default function SuggestedProfile({
     if (
       await updateFollowing(
         { doc: userDocId, id: userId, following },
-        { doc: profileDocId, id: profileId, followers }
+        { doc: profileDocId, id: profileId }
       )
     )
       setFollowed(true);
@@ -52,7 +52,7 @@ export default function SuggestedProfile({
           alt={`suggested-profile-${username}`}
           skeletonSize={{ width: 32, height: 32 }}
         />
-        <Link to={`/${username}`}>
+        <Link to={`/p/${username}`}>
           <p className="font-bold text-sm">{username}</p>
         </Link>
       </div>

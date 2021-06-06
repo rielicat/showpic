@@ -11,6 +11,7 @@ import ProtectedRoute from "helpers/protected.route";
 const Authentication = lazy(() => import("views/authentication"));
 const NotFound = lazy(() => import("views/not-found"));
 const Dashboard = lazy(() => import("views/dashboard"));
+const Profile = lazy(() => import("views/profile"));
 
 function App() {
   const { user } = useAuthListener();
@@ -35,8 +36,8 @@ function App() {
                 path={ROUTES.DASHBOARD}
                 component={Dashboard}
               />
-
-              <Route path={ROUTES.NOT_FOUND} component={NotFound} />
+              <ProtectedRoute path={ROUTES.PROFILE} component={Profile} />
+              <Route path={ROUTES.ALL} component={NotFound} />
             </Switch>
           </Suspense>
         </Router>

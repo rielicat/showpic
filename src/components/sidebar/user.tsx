@@ -24,7 +24,7 @@ export default function User({ username, fullName }: Props) {
     <Skeleton height={61} />
   ) : (
     <Link
-      to={`/${username}`}
+      to={`/p/${username}`}
       className="grid grid-cols-4 gap-4 mb-6 items-center"
     >
       <div className="flex items-center justify-between col-span-1">

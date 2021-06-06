@@ -85,7 +85,7 @@ export default function Header() {
                   </svg>
                 </button>
                 <div className="flex items-center cursor-pointer">
-                  <Link to={`/${user.displayName}`}>
+                  <Link to={`/p/${user.displayName}`}>
                     <Img
                       circle
                       skeletonSize={{ width: 32, height: 32 }}

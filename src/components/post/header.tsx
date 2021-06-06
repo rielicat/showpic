@@ -26,7 +26,7 @@ export default function Header({ username }: Props) {
           alt=""
           skeletonSize={{ width: 32, height: 32 }}
         />
-        <Link to={`/${username}`}>
+        <Link to={`/p/${username}`}>
           <p className="text-sm font-bold cursor-pointer">{username}</p>
         </Link>
       </div>

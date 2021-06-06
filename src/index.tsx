@@ -2,7 +2,7 @@ import "./wdyr";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "App";
+import App from "app";
 import FirebaseContext from "context/firebase";
 import { firestore, auth, storage, FieldValue } from "lib/firebase";
 

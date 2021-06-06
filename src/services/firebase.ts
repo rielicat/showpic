@@ -64,6 +64,30 @@ export const getUserByUserId = async (userId: string) => {
 
 /**
  *
+ * @param username user id firebase auth
+ * @returns returns document where userId matchs user's uid
+ */
+export const getUserByUsername = async (username: string) => {
+  return (
+    await firestore.collection("users").where("username", "==", username).get()
+  ).docs.map((item) => ({ ...item.data(), docId: item.id } as User))[0];
+};
+
+/**
+ *
+ * @param userId User's ID
+ * @returns List of Photo objects for the user specified
+ */
+export const getUserPhotosByUserId = async (
+  userId: string
+): Promise<Photo[]> => {
+  return (
+    await firestore.collection("photos").where("userId", "==", userId).get()
+  ).docs.map((item) => ({ ...item.data(), docId: item.id } as Photo));
+};
+
+/**
+ *
  * @param userId current user's uid from firebase auth
  * @returns return list of users what are not being followed by current user
  */
@@ -85,7 +109,6 @@ export const getSuggestedProfiles = async (userId: string) => {
 interface UpdateFollowingProps {
   doc: string;
   id: string;
-  followers?: string[];
   following?: string[];
 }
 
@@ -102,11 +125,9 @@ type UpdateMethod = "arrayRemove" | "arrayUnion";
  */
 export const updateFollowing = async (
   current: UpdateFollowingProps,
-  target: UpdateFollowingProps
+  target: Pick<UpdateFollowingProps, "doc" | "id">
 ) => {
-  const isFollowing: UpdateMethod = current.following?.some((f) =>
-    target.followers?.includes(f)
-  )
+  const method: UpdateMethod = current.following?.some((f) => f === target.id)
     ? "arrayRemove"
     : "arrayUnion";
 
@@ -115,11 +136,11 @@ export const updateFollowing = async (
       firestore
         .collection("users")
         .doc(current.doc)
-        .update({ following: FieldValue[isFollowing](target.id) }),
+        .update({ following: FieldValue[method](target.id) }),
       firestore
         .collection("users")
         .doc(target.doc)
-        .update({ followers: FieldValue[isFollowing](current.id) }),
+        .update({ followers: FieldValue[method](current.id) }),
     ]);
     return true;
   } catch (e) {
