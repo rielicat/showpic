@@ -85,15 +85,15 @@ export default function Authentication(props: Props) {
   };
 
   return (
-    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <div className="flex w-3/5 justify-center">
+    <div className="container flex mx-auto justify-center max-w-screen-md items-center h-screen">
+      <div className="hidden md:flex w-3/5 justify-center">
         <Img
           skeletonSize={{ height: 400, width: 280 }}
           src={"/images/iphone-with-profile.jpg"}
           alt="iPhone with Instagram app"
         />
       </div>
-      <div className="flex flex-col w-2/5">
+      <div className="flex flex-col w-80 md:w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full">
             <Img
