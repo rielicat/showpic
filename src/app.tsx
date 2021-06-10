@@ -7,6 +7,7 @@ import AssetsContext from "context/assets";
 import useAuthListener from "hooks/use-auth-listener";
 import useImageListener from "hooks/use-image-listener";
 import ProtectedRoute from "helpers/protected.route";
+import Loading from "components/loading";
 
 const Authentication = lazy(() => import("views/authentication"));
 const NotFound = lazy(() => import("views/not-found"));
@@ -21,7 +22,7 @@ function App() {
     <UserContext.Provider value={{ user }}>
       <AssetsContext.Provider value={{ images, addPaths, getAvatar }}>
         <Router>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<Loading />}>
             <Switch>
               <Route
                 path={ROUTES.LOGIN}

@@ -7,7 +7,7 @@ import Photos from "./photos";
 
 interface InitialStateProps {
   profile: User;
-  photosCollection: Photo[];
+  photosCollection?: Photo[];
   followerCount: number;
   followingCount: number;
 }
@@ -26,7 +26,6 @@ const reducer = (
 const initialState: InitialStateProps = {
   followerCount: 0,
   followingCount: 0,
-  photosCollection: [],
   profile: {} as User,
 };
 
@@ -55,7 +54,7 @@ export default function UserProfile({ user }: Props) {
         profile={profile}
         followerCount={followerCount}
         followingCount={followingCount}
-        photosCount={photosCollection.length}
+        photosCount={photosCollection?.length}
         setFollowerCount={(followerCount: number) =>
           dispatch({ followerCount })
         }
