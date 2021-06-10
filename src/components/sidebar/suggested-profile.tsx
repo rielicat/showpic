@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Img from "components/img";
 import AssetsContext from "context/assets";
+import PostContext from "context/post";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { updateFollowing } from "services/firebase";
@@ -11,7 +12,6 @@ interface Props {
   profileId: string;
   userId: string;
   userDocId: string;
-  profileFollowers: string[];
   userFollowing: string[];
 }
 
@@ -21,12 +21,12 @@ export default function SuggestedProfile({
   profileId,
   userId,
   userDocId,
-  profileFollowers: followers,
   userFollowing: following,
 }: Props) {
   const [followed, setFollowed] = useState(false);
 
   const { images, getAvatar } = useContext(AssetsContext);
+  const { setUpdate } = useContext(PostContext);
 
   useEffect(() => {
     if (username) getAvatar(username);
@@ -40,6 +40,8 @@ export default function SuggestedProfile({
       )
     )
       setFollowed(true);
+
+    setUpdate(true);
   };
 
   return !followed ? (

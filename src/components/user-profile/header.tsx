@@ -12,7 +12,7 @@ interface Props {
   profile: User;
   followerCount: number;
   followingCount: number;
-  photosCount: number;
+  photosCount?: number;
   setFollowerCount: (followerCount: number) => void;
 }
 
@@ -94,7 +94,7 @@ export default function Header({
           </div>
           <div className="container mt-6 flex items-center ">
             <p className="mr-10 ">
-              <span className="font-bold">{photosCount}</span> photo
+              <span className="font-bold">{photosCount || 0}</span> photo
               {photosCount !== 1 && "s"}
             </p>
             <p className="mr-10">

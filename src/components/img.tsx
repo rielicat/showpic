@@ -1,7 +1,10 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 
-type SkeletonSize = { height: number; width: number };
+type SkeletonSize = {
+  width?: number | string;
+  height?: number | string;
+};
 
 interface Props
   extends React.DetailedHTMLProps<
@@ -10,14 +13,25 @@ interface Props
   > {
   circle?: boolean;
   skeletonSize?: SkeletonSize;
+  skeletonStyle?: React.CSSProperties;
 }
 
-const skeletonStyle: React.CSSProperties = {
+const style: React.CSSProperties = {
   lineHeight: 1.5,
 };
 
 export default function Img(props: Props) {
-  const { src, alt, className, skeletonSize, circle, ...rest } = props;
+  const {
+    src,
+    alt,
+    className,
+    skeletonSize,
+    skeletonStyle: propsStyle,
+    circle,
+    ...rest
+  } = props;
+  const skeletonStyle = { ...style, ...propsStyle };
+
   return !src ? (
     <Skeleton
       circle={circle}

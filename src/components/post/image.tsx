@@ -18,6 +18,7 @@ export default function Image({ photoId }: Props) {
     <div>
       <Img
         className="flex w-full align-center justify-center"
+        skeletonSize={{ height: 400 }}
         src={images[`${photoId}.jpg`]}
         alt={`Photo id ${photoId}`}
       />
