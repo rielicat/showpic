@@ -45,7 +45,6 @@ export default function Suggestions({ userId, docId, following }: Props) {
               profileId={rest.userId}
               userDocId={docId}
               userId={userId}
-              profileFollowers={followers}
               userFollowing={following}
             />
           ))}
