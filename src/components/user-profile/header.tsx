@@ -67,11 +67,11 @@ export default function Header({
 
   return (
     <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
-      <div className="container flex justify-center">
+      <div className="container flex justify-center items-center">
         <Img
           circle
           skeletonSize={{ width: 160, height: 160 }}
-          className="rounded-full h-40 w-40 flex"
+          className="rounded-full h-24 w-24 sm:h-40 sm:w-40 "
           alt={`${profile.username} profile picture`}
           src={images[`${profile.username}.jpg`]}
         />
@@ -93,11 +93,11 @@ export default function Header({
             )}
           </div>
           <div className="container mt-6 flex items-center ">
-            <p className="mr-10 ">
+            <p className="mr-8">
               <span className="font-bold">{photosCount || 0}</span> photo
               {photosCount !== 1 && "s"}
             </p>
-            <p className="mr-10">
+            <p className="mr-8">
               <span className="font-bold">{followingCount}</span> following
             </p>
             <p>
