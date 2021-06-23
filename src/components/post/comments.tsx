@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { MutableRefObject, useState } from "react";
 import { formatDistance } from "date-fns";
 import { Link } from "react-router-dom";
