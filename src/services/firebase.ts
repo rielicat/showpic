@@ -111,12 +111,12 @@ export const getSuggestedProfiles = async (userId: string) => {
   return (
     await firestore
       .collection("users")
-      .limit(5)
-      .where("userId", "!=", userId)
+      .limit(6)
+      .where("followers", "not-in", [userId])
       .get()
   ).docs
     .map((d) => ({ ...d.data(), docId: d.id } as User))
-    .filter((u) => !u.followers.includes(userId));
+    .filter((u) => !u.userId.includes(userId));
 };
 
 /**

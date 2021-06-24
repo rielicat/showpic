@@ -16,12 +16,14 @@ export default function Header() {
   const history = useHistory();
 
   useEffect(() => {
-    if (user?.displayName) getAvatar(user.displayName);
+    if (!!user?.displayName) {
+      getAvatar(user.displayName);
+    }
   }, [user]);
 
   const handleSignOut = () => {
     auth.signOut();
-    history.push(ROUTES.LOGIN);
+    history.replace(ROUTES.LOGIN);
   };
 
   return (
