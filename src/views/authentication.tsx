@@ -11,6 +11,9 @@ import * as ROUTES from "constants/routes";
 import { capitalize } from "helpers/format";
 import useAuthListener from "hooks/use-auth-listener";
 
+import defaultAvatar from "assets/default-avatar.jpg";
+import { getArrayBuffer } from "helpers/utils";
+
 interface Props {
   action: "login" | "register";
 }
@@ -20,7 +23,7 @@ export default function Authentication(props: Props) {
 
   const history = useHistory();
   const { user } = useAuthListener();
-  const { firestore, auth } = useContext(FirebaseContext);
+  const { firestore, storage, auth } = useContext(FirebaseContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -41,7 +44,7 @@ export default function Authentication(props: Props) {
   }, [action]);
 
   useEffect(() => {
-    if (user.uid) history.replace(ROUTES.DASHBOARD);
+    if (!!user.uid) history.push(ROUTES.DASHBOARD);
   }, [user]);
 
   const handleAuth = async (event: FormEvent<HTMLFormElement>) => {
@@ -66,21 +69,28 @@ export default function Authentication(props: Props) {
         payload.email,
         password
       );
-      await createdUser.user?.updateProfile({ displayName: payload.username });
+      await createdUser.user?.updateProfile({
+        displayName: payload.username,
+      });
       await firestore.collection("users").add({
         userId: createdUser?.user?.uid,
         followers: [],
         following: [],
         dateCreated: Date.now(),
+        username: payload.username,
         ...payload,
       });
+      await storage
+        .ref()
+        .child(`images/public/avatars/${payload.username}.jpg`)
+        .put(await getArrayBuffer(defaultAvatar));
     } else {
       throw new Error("Username is already taken, please try another.");
     }
   };
 
   const handleChange = (key: string, value: string) => {
-    payload[key] = value;
+    payload[key] = payload[key] === "password" ? value : value.toLowerCase();
     setPayload({ ...payload });
   };
 

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export type ImagePaths = "iphone-with-profile.jpg" | "logo.png" | string ;
+export type ImagePaths = "iphone-with-profile.jpg" | "logo.png" | string;
 
 export type ImageProps = {
   [P in ImagePaths]?: string;
