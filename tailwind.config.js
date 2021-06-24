@@ -2,7 +2,11 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        custom: "0 -4px 8px 4px rgba(0, 0, 0, 0.09)",
+      },
+    },
     fill: (theme) => ({
       red: theme("colors.red.primary"),
     }),
@@ -30,5 +34,7 @@ module.exports = {
       display: ["group-hover"],
     },
   },
-  plugins: [],
+  corePlugins: {
+    outline: true,
+  },
 };

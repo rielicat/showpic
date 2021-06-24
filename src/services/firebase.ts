@@ -88,6 +88,22 @@ export const getUserPhotosByUserId = async (
 
 /**
  *
+ * @param query Value to search user with this username
+ * @returns List of users that match the specified query
+ */
+export const getProfilesByName = async (query: string): Promise<User[]> => {
+  return (
+    await firestore
+      .collection("users")
+      .orderBy("username")
+      .startAt(query)
+      .endAt(query + "\uf8ff")
+      .get()
+  ).docs.map((d) => ({ ...d.data(), docId: d.id } as User));
+};
+
+/**
+ *
  * @param userId current user's uid from firebase auth
  * @returns return list of users what are not being followed by current user
  */

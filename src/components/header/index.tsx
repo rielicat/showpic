@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from "react";
-import FirebaseContext from "context/firebase";
-import UserContext from "context/user";
-import { Link, useHistory } from "react-router-dom";
-
 import * as ROUTES from "constants/routes";
 import AssetsContext from "context/assets";
-import Img from "./img";
+import FirebaseContext from "context/firebase";
+import UserContext from "context/user";
+import { useContext, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import Img from "components/img";
+import SearchInput from "./search-input";
 
 export default function Header() {
   const { auth } = useContext(FirebaseContext);
@@ -28,19 +28,20 @@ export default function Header() {
     <header className="h-16 bg-white border-b border-gray-primary mb-8 px-2">
       <div className="container mx-auto max-w-screen-lg h-full">
         <div className="flex justify-between h-full">
-          <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
-            <h1 className="flex justify-center w-full">
-              <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
-                <Img
-                  skeletonSize={{ width: 103, height: 29 }}
-                  src={"/images/logo.png"}
-                  alt="Instagram"
-                  className="mt-2 w-6/12"
-                />
-              </Link>
-            </h1>
+          <div className="hidden sm:flex text-center items-center cursor-pointer">
+            <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
+              <Img
+                skeletonSize={{ width: 103, height: 29 }}
+                src={"/images/logo.png"}
+                alt="Instagram"
+                className="mt-2 w-28"
+              />
+            </Link>
           </div>
-          <div className="text-gray-700 text-center flex items-center align-items">
+          <div className="text-gray-primary flex items-center mx-8 w-56">
+            <SearchInput />
+          </div>
+          <div className="text-center flex items-center">
             {user ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
@@ -84,12 +85,12 @@ export default function Header() {
                     />
                   </svg>
                 </button>
-                <div className="flex items-center cursor-pointer">
+                <div className="w-8 items-center cursor-pointer">
                   <Link to={`/p/${user.displayName}`}>
                     <Img
                       circle
                       skeletonSize={{ width: 32, height: 32 }}
-                      className="rounded-full h-8 w-8 flex"
+                      className="rounded-full h-8 w-8"
                       src={images[`${user.displayName}.jpg`]}
                       alt={`Profile ${user.displayName}`}
                     />
