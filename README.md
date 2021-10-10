@@ -1,7 +1,7 @@
 ## Instagram clone with CRA, Tailwind CSS and Firebase.
 Based on a course from Freecodecamp's YouTube's Channel.
 
-### [Live preview](https://instagram.pyscriptbug.com)
+### [Live preview](https://showpic.pyscriptbug.com)
 
 ###### Create React App - https://es.reactjs.org/docs/create-a-new-react-app.html
 ###### Tailwind CSS - https://tailwindcss.com
